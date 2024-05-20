@@ -14,6 +14,7 @@
 #include <sync.h>
 #include <uint256.h>
 #include <util/time.h>
+#include <hashdb.h>
 
 #include <vector>
 
@@ -424,7 +425,14 @@ public:
         block.nTime = nTime;
         block.nBits = nBits;
         block.nNonce = nNonce;
+        /*
+        if (phashdb != nullptr) {
+            return phashdb->GetHash(block);
+        }
         return block.GetHash();
+        */
+        assert(phashdb != nullptr); // FIXME: Benchmark and tests don't initialize hash database
+        return phashdb->GetHash(block);
     }
 
     uint256 GetBlockHash() = delete;

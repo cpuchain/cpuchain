@@ -8,9 +8,31 @@
 #include <hash.h>
 #include <tinyformat.h>
 
+/* CPUpower */
+#include <crypto/yespower/yespower.h>
+#include <streams.h>
+#include <version.h>
+#include <stdlib.h> // exit()
+#include <sync.h>
+
 uint256 CBlockHeader::GetHash() const
 {
-    return SerializeHash(*this);
+    // return SerializeHash(*this);
+    static const yespower_params_t cpupower = {
+        .version = YESPOWER_1_0,
+        .N = 2048,
+        .r = 32,
+        .pers = (const uint8_t *)"CPUpower: The number of CPU working or available for proof-of-work mining",
+        .perslen = 73
+    };
+    uint256 hash;
+    CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+    ss << *this;
+    if (yespower_tls((const uint8_t *)&ss[0], ss.size(), &cpupower, (yespower_binary_t *)&hash)) {
+        tfm::format(std::cerr, "Error: CBlockHeader::GetHash(): failed to compute PoW hash (out of memory?)\n");
+        exit(1);
+    }
+    return hash;
 }
 
 std::string CBlock::ToString() const

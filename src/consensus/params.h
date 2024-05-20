@@ -128,6 +128,9 @@ struct Params {
     bool signet_blocks{false};
     std::vector<uint8_t> signet_challenge;
 
+    /* CPUchain LWMA */
+    int64_t nZawyLwmaAveragingWindow;
+
     int DeploymentHeight(BuriedDeployment dep) const
     {
         switch (dep) {
