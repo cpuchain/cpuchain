@@ -29,7 +29,7 @@ const std::string CLIENT_NAME("CPUchain");
 #endif
 
 //! git will put "#define GIT_COMMIT_ID ..." on the next line inside archives. 
-#define GIT_COMMIT_ID "dda03895d7e4e8037381c2bea097b63931d0834f"
+#define GIT_COMMIT_ID "14bd7c23207bd45a55f16b866b9c8230f1c112b0"
 
 #ifdef BUILD_GIT_TAG
     #define BUILD_DESC BUILD_GIT_TAG
