@@ -28,6 +28,8 @@ Wallets
 -------
 - [Download CPUchain Core wallet](https://github.com/cpuchain/cpuchain/releases/latest)
 
+- [Official Web Wallet](https://wallet.cpuchain.org)
+
 
 Coin specifications:
 -------
@@ -59,6 +61,9 @@ Block explorer
 -------
 
 [Official cpuchain explorer](https://explorer.cpuchain.org)
+
+[Blockbook Instance](https://blockbook.cpuchain.org)
+
 If you have an explorer that you want to add to the list contact us. 
 
 
@@ -79,3 +84,4 @@ License
 
 CPUchain Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
+
